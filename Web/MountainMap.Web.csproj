@@ -10,6 +10,7 @@
     <Configurations>Release;Debug</Configurations>
     <StaticWebAssetsEnabled>true</StaticWebAssetsEnabled>
     <AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
+    <CompressionEnabled>true</CompressionEnabled>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,7 +18,7 @@
   </ItemGroup>
 
   <PropertyGroup>
-    <CompressionEnabled>false</CompressionEnabled>
+    
     <BlazorEnableCompression>false</BlazorEnableCompression>
   </PropertyGroup>
   <ItemGroup>
