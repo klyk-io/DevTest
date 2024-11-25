@@ -1,0 +1,299 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css");
+// 
+// Styles
+//
+/*
+*/
+
+// Import variables
+@import "./variables.scss";
+
+// Import Bootstrap
+
+@import "../../node_modules/bootstrap/scss/functions";
+@import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/mixins";
+
+@import "../../node_modules/bootstrap/scss/bootstrap";
+@import "../../node_modules/@progress/kendo-theme-bootstrap/dist/all.scss";
+
+// Global CSS
+@import "./global.scss";
+
+// Components
+@import "./components/navbar.scss";
+@import "./components/device-mockup.scss";
+
+// Sections
+@import "./sections/cta.scss";
+@import "./sections/features.scss";
+@import "./sections/footer.scss";
+@import "./sections/masthead.scss";
+
+.logo img {     
+    max-height: 40px !important;
+}
+
+
+.k-barcode > div {
+    margin: auto !important;
+    padding: 0 !important;
+}
+
+.body {
+    /* Set the fixed height of the footer here */
+    margin-bottom: 200px;
+}
+
+.footer {
+    margin-top: 10px;
+    padding-top: 10px;
+    position: absolute;
+    text-align: center;
+    bottom: 0;
+    width: 100%;
+    /*white-space: nowrap;*/
+    /* Set the fixed height of the footer here */
+    height: 200px;
+    line-height: 30px; /* Vertically center the text there */
+}
+
+.dropdown-toggle::after{
+    border-top:none;
+}
+
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+
+.nav-link {
+    white-space: nowrap;
+}
+
+.border-top {
+    border-top: 1px solid rgba(128, 128, 128, 0.5) !important;
+}
+
+.border-bottom {
+    border-bottom: 1px solid rgba(128, 128, 128, 0.5) !important;
+}
+
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+    font-size: 1rem;
+    line-height: inherit;
+}
+
+
+.apple {
+    background-color: black !important;
+    color: white;
+    border-color: black;
+}
+
+.microsoft {
+    background-color: #f25022 !important;
+    color: white;
+    border-color: #f25022;
+}
+
+.twitter {
+    background-color: #1d9bf0 !important;
+    color: white;
+    border-color: #1d9bf0;
+}
+
+.facebook {
+    background-color: #1877f2 !important;
+    color: white;
+    border-color: #1877f2;
+}
+
+.google {
+    background-color: #fbbc05 !important;
+    color: white;
+    border-color: #fbbc05;
+}
+
+
+.navbar-brand .logo img {
+    max-height: 30px;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+    //padding-bottom: 40px;
+}
+
+
+.border-top {
+    border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.bg-status-open {
+    background-color: var(--bs-info) !important
+}
+
+.bg-status-waiting {
+    background-color: var(--bs-warning) !important
+}
+
+.bg-status-closed {
+    background-color: var(--bs-danger) !important
+}
+
+
+.footer p {
+    margin-bottom: 0;
+}
+
+
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+    font-size: 1rem;
+    line-height: inherit;
+}
+
+.alert-dismissible {
+    padding-right: 5rem;
+}
+
+.product {
+    text-align: center;
+    min-height: 150px;
+}
+
+.microsoft {
+    background-color: #f25022 !important;
+    color: white;
+    border-color: #f25022 !important;
+}
+
+.facebook {
+    background-color: #1877f2 !important;
+    color: white;
+    border-color: #1877f2 !important;
+}
+
+.google {
+    background-color: #fbbc05 !important;
+    color: white;
+    border-color: #fbbc05 !important;
+}
+
+.tab-content p {
+    margin-top: 1em;
+}
+
+.apple {
+    background-color: black !important;
+    color: white;
+    border-color: black !important;
+}
+
+.k-barcode > div {
+    margin: auto !important;
+}
+
+
+a.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+}
+
+.navbar-logo {
+    background-repeat: no-repeat;
+    min-width: 45px !important;
+    margin-bottom: 0;
+    background-repeat: no-repeat;
+    background-position-x: left;
+    background-position-y: center;
+    background-size: 35px;
+    padding-left: 50px;
+}
+
+
+.border-top {
+    border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+
+a.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+}
+
+.navbar-logo {
+    background-repeat: no-repeat;
+    min-width: 45px !important;
+    margin-bottom: 0;
+}
+
+.orders {
+    margin-left: 15px;
+}
+
+.bg-color {
+    background-color: $primary !important;
+    color: white;
+}
+
+.fixed-top {
+    border-bottom: solid 1px #ccc;
+}
+
+
+.h4, h4 {
+    font-size: .98438rem !important;
+}
+
+.navbar-vertical-content {
+    height: calc(100% - 3.875rem);
+    overflow-y: auto;
+}
+
+.navbar-vertical-content {
+    overflow: hidden;
+}
+
+.navbar-vertical-content {
+    height: calc(100% - 3.875rem);
+    overflow-y: auto;
+}
+
+.navbar-vertical-content {
+    overflow: hidden;
+}
+
+/**, ::after, ::before {
+    box-sizing: border-box;
+}
+
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+*/

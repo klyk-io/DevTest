@@ -1,0 +1,8 @@
+﻿User-agent: *
+Disallow: /identity/
+Disallow: /api/
+Disallow: /events/
+Disallow: /cart/
+Disallow: /account/
+Disallow: /privacy
+Disallow: /peaks*?*

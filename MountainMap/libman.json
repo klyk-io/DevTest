@@ -1,0 +1,15 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "quill@2.0.2",
+      "destination": "wwwroot/lib/quill"
+    },
+    {
+      "provider": "unpkg",
+      "destination": "wwwroot/lib/signalr",
+      "library": "@microsoft/signalr@latest"
+    }
+  ]
+}

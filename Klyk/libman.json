@@ -1,0 +1,115 @@
+{
+	"version": "1.0",
+	"defaultProvider": "cdnjs",
+	"libraries": [
+		{
+			"provider": "unpkg",
+			"library": "bootstrap@5.2.3",
+			"destination": "wwwroot/lib/bootstrap",
+			"files": [
+				"dist/**",
+				"scss/**"
+			]
+		},
+		{
+			"library": "jquery@3.6.0",
+			"destination": "wwwroot/lib/jquery",
+			"provider": "jsdelivr",
+			"files": [
+				"dist/jquery.js",
+				"dist/jquery.min.js"
+			]
+		},
+		{
+			"library": "jquery@3.6.0",
+			"destination": "wwwroot/lib/jquery",
+			"provider": "jsdelivr",
+			"files": [
+				"dist/jquery.js",
+				"dist/jquery.min.js"
+			]
+		},
+		{
+			"library": "jquery-validation@1.20.0",
+			"destination": "wwwroot/lib/jquery-validate",
+			"provider": "jsdelivr",
+			"files": [
+				"dist/jquery.validate.js",
+				"dist/jquery.validate.min.js"
+			]
+		},
+		{
+			"library": "bootstrap-icons@1.11.0",
+			"destination": "wwwroot/lib/bootstrap-icons"
+		},
+		{
+			"library": "jquery-validation-unobtrusive@3.2.12",
+			"destination": "wwwroot/lib/jquery-validation-unobtrusive",
+			"provider": "jsdelivr",
+			"files": [
+				"dist/jquery.validate.unobtrusive.js",
+				"dist/jquery.validate.unobtrusive.min.js"
+			]
+		},
+		{
+			"library": "moment@2.29.3",
+			"destination": "wwwroot/lib/moment",
+			"provider": "jsdelivr",
+			"files": [
+				"dist/moment.js",
+				"dist/moment.min.js"
+			]
+		},
+		{
+			"library": "html5-qrcode@2.2.1",
+			"provider": "unpkg",
+			"destination": "wwwroot/lib/html5-qrcode",
+			"files": [ "html5-qrcode.min.js" ]
+		},
+		{
+			"library": "codemirror@5.65.6",
+			"destination": "wwwroot/lib/codemirror",
+			"provider": "jsdelivr",
+			"files": [
+
+			]
+		},
+		{
+			"library": "openlayers@9.2.4",
+			"destination": "wwwroot/lib/openlayers",
+			"provider": "cdnjs",
+			"files": ["ol.css", "ol.min.css"]			
+		},
+		{
+			"library": "js-beautify@1.14.4",
+			"destination": "wwwroot/lib/js-beautify",
+			"provider": "unpkg"
+		},
+		{
+			"library": "font-awesome@6.4.2",
+			"provider": "cdnjs",
+			"destination": "wwwroot/lib/font-awesome"
+		},
+		{
+			"library": "intl-tel-input@17.0.18",
+			"destination": "wwwroot/lib/intl-tel-input",
+			"provider": "jsdelivr",
+			"files": [
+				"build/js/intlTelInput.js",
+				"build/js/intlTelInput.min.js",
+				"build/css/intlTelInput.css",
+				"build/css/intlTelInput.min.css",
+				"build/img/flags.png",
+				"build/img/flags@2x.png",
+				"build/js/utils.js",
+				"build/js/data.js",
+				"build/js/data.min.js"
+			]
+		},
+		{
+			"library": "quill@1.3.7",
+			"destination": "wwwroot/lib/quill",
+			"provider": "jsdelivr"
+		}
+	]
+}

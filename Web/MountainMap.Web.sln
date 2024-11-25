@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35514.174
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MountainMap.Web", "MountainMap.Web.csproj", "{CCBCA37C-50F9-4DFC-A17C-500A8D0B16F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MountainMap", "..\MountainMap\MountainMap.csproj", "{D2A3C567-661D-4FBD-9057-63EEB30FD9EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Klyk", "..\Klyk\Klyk.csproj", "{8F7FD2CE-AE1D-4BE7-9F55-DC34C37AC396}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9AAE9A41-0832-4EA0-AA64-B8C94E64C26A}"
+	ProjectSection(SolutionItems) = preProject
+		..\global.json = ..\global.json
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CCBCA37C-50F9-4DFC-A17C-500A8D0B16F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCBCA37C-50F9-4DFC-A17C-500A8D0B16F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCBCA37C-50F9-4DFC-A17C-500A8D0B16F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCBCA37C-50F9-4DFC-A17C-500A8D0B16F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2A3C567-661D-4FBD-9057-63EEB30FD9EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2A3C567-661D-4FBD-9057-63EEB30FD9EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2A3C567-661D-4FBD-9057-63EEB30FD9EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2A3C567-661D-4FBD-9057-63EEB30FD9EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F7FD2CE-AE1D-4BE7-9F55-DC34C37AC396}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F7FD2CE-AE1D-4BE7-9F55-DC34C37AC396}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F7FD2CE-AE1D-4BE7-9F55-DC34C37AC396}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F7FD2CE-AE1D-4BE7-9F55-DC34C37AC396}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
