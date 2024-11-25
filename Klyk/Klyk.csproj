@@ -8,7 +8,7 @@
     <PublishAot>false</PublishAot>
     <StaticWebAssetsEnabled>true</StaticWebAssetsEnabled>
     <AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
-    <CompressionEnabled>false</CompressionEnabled>
+    <CompressionEnabled>true</CompressionEnabled>
   </PropertyGroup>
 
 
