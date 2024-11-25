@@ -8,20 +8,9 @@
     <PublishAot>false</PublishAot>
     <StaticWebAssetsEnabled>true</StaticWebAssetsEnabled>
     <AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
+    <CompressionEnabled>false</CompressionEnabled>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="Controllers\**" />
-    <Compile Remove="Fonts\**" />
-    <Content Remove="Controllers\**" />
-    <Content Remove="Fonts\**" />
-    <EmbeddedResource Remove="Controllers\**" />
-    <EmbeddedResource Remove="Fonts\**" />
-    <None Remove="Controllers\**" />
-    <None Remove="Fonts\**" />
-    <TypeScriptCompile Remove="Controllers\**" />
-    <TypeScriptCompile Remove="Fonts\**" />
-  </ItemGroup>
 
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
