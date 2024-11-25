@@ -8,6 +8,7 @@
     <PublishAot>false</PublishAot>
     <AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
     <StaticWebAssetsEnabled>true</StaticWebAssetsEnabled>
+    <CompressionEnabled>false</CompressionEnabled>
   </PropertyGroup>
 
   <ItemGroup>
@@ -29,11 +30,6 @@
         <Pack>False</Pack>
      </None>
   </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="ClientApp\file1.ts" />
-  </ItemGroup>
-
 
   <ItemGroup>
 

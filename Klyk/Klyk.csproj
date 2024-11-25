@@ -8,6 +8,7 @@
     <PublishAot>false</PublishAot>
     <StaticWebAssetsEnabled>true</StaticWebAssetsEnabled>
     <AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
+    <CompressionEnabled>false</CompressionEnabled>
   </PropertyGroup>
 
   <ItemGroup>
@@ -27,7 +28,7 @@
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
   <PropertyGroup>
-    <CompressionEnabled>false</CompressionEnabled>
+    
   </PropertyGroup>
   
   <ItemGroup>
