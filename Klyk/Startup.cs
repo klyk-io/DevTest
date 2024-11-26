@@ -1,19 +1,10 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
-using Microsoft.AspNetCore.Authentication;
-using Stripe;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Hosting;
-using Microsoft.AspNetCore.SignalR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Rewrite;
 using Microsoft.Extensions.Logging;
-using Twilio;
 
 [assembly: HostingStartup(typeof(Klyk.Startup))]
 namespace Klyk
@@ -333,26 +324,7 @@ namespace Klyk
             //    domainName = "staging.mountainmap.com";
             //}
 
-            var ApplePayDomainCreateOptions = new ApplePayDomainCreateOptions
-            {
-                DomainName = domainName
-            };
-
-            var service = new ApplePayDomainService();
-
-            try
-            {
-                var domain = service.Create(ApplePayDomainCreateOptions);
-            }
-            catch (Exception ex)
-            {
-                logger.LogError(ex.Message);
-            }
-
-            string accountSid = Configuration.GetSection("Application:Twilio")["SID"];
-            string authToken = Configuration.GetSection("Application:Twilio")["Token"];
-
-            TwilioClient.Init(accountSid, authToken);
+           
 
             if (env.IsDevelopment() || env.IsStaging())
             {

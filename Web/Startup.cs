@@ -10,25 +10,13 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Rewrite;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using System.Diagnostics;
 using Microsoft.Extensions.Hosting;
-using Stripe;
 using Microsoft.Extensions.Logging;
-using System.Net.Http;
-using Twilio;
 using System.Text.Json;
-using System.IO;
-using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.Extensions.FileProviders;
 using Microsoft.AspNetCore.Diagnostics;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-//using Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation;
-using Microsoft.AspNetCore.SignalR;
-using Microsoft.IdentityModel.Logging;
 
 namespace MountainMap.Web
 {
@@ -85,99 +73,6 @@ namespace MountainMap.Web
                 options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
             });
 
-
-            var authConfig = Configuration.GetSection("Authentication");
-
-            authentication.AddMicrosoftAccount(microsoftOptions =>
-            {
-                microsoftOptions.ClientId = authConfig["Microsoft:ApplicationId"];
-                microsoftOptions.ClientSecret = authConfig["Microsoft:Password"];
-                microsoftOptions.SaveTokens = true;
-                //microsoftOptions.Events.OnTicketReceived += OnTicketRecieved;
-
-            });
-
-            authentication.AddGoogle(googleOptions =>
-            {
-                googleOptions.ClientId = authConfig["Google:ClientId"];
-                googleOptions.ClientSecret = authConfig["Google:ClientSecret"];
-                googleOptions.SaveTokens = true;
-                //googleOptions.Events.OnTicketReceived += OnTicketRecieved;
-
-                //googleOptions.Scope.Add("https://www.googleapis.com/auth/youtube.upload");
-
-                googleOptions.Events.OnCreatingTicket = ctx =>
-                {
-
-                    List<AuthenticationToken> tokens = ctx.Properties.GetTokens().ToList();
-
-                    tokens.Add(new AuthenticationToken()
-                    {
-                        Name = "TicketCreated",
-                        Value = DateTime.UtcNow.ToString()
-                    });
-
-                    ctx.Properties.StoreTokens(tokens);
-
-                    return Task.CompletedTask;
-                };
-
-                googleOptions.Events.OnRemoteFailure = ctx =>
-                {
-                    var authProperties = googleOptions.StateDataFormat.Unprotect(ctx.Request.Query["state"]);
-                    // do something
-                    ctx.HandleResponse();
-
-                    ctx.Response.Redirect("Account/Login?error=" + ctx.Failure.Message);
-
-                    return Task.FromResult(0);
-
-                    //return Task.CompletedTask;
-                };
-
-                //googleoptions.Events.OnRemoteFailure += OnRemoteFailure;
-                //googleoptions.Events.OnCreatingTicket += OnCreatingTicket;
-                //googleoptions.Events.OnRedirectToAuthorizationEndpoint += OnRedirect;
-
-                //googleoptions.CorrelationCookie.SameSite = SameSiteMode.None;
-
-                //googleoptions.AuthorizationEndpoint = "https://3597-75-169-0-173.ngrok.io/signin-google";
-
-                //googleoptions.CorrelationCookie = new Microsoft.AspNetCore.Http.CookieBuilder
-                //{
-                //    HttpOnly = false,
-                //    SameSite = Microsoft.AspNetCore.Http.SameSiteMode.None,
-                //    SecurePolicy = Microsoft.AspNetCore.Http.CookieSecurePolicy.None,
-                //    Expiration = TimeSpan.FromMinutes(10)
-                //};
-
-                //googleoptions.CallbackPath = "/auth/google";
-
-            });
-
-            authentication.AddStrava(options =>
-            {
-                options.ClientId = authConfig["Strava:ClientId"];
-                options.ClientSecret = authConfig["Strava:ClientSecret"];
-                options.SaveTokens = true;
-                options.Scope.Add("activity:write");
-                options.Scope.Add("profile:read_all");
-
-                //options.Events.OnTicketReceived += OnTicketRecieved;
-
-            });
-
-            
-            authentication.AddInstagram(options =>
-             {
-
-                 options.ClientId = authConfig["Instagram:AppId"];
-                 options.ClientSecret = authConfig["Instagram:AppSecret"];
-                 options.SaveTokens = true;
-
-                 //options.Events.OnTicketReceived += OnTicketRecieved;
-
-             });
             //.AddFacebook(options =>
             //{
             //    options.AppId = Configuration["Authentication:Facebook:AppId"];
@@ -201,58 +96,6 @@ namespace MountainMap.Web
             //     // TODO
             // });
 
-            var Apple = Configuration.GetSection("Authentication:Apple");
-
-            if(_hostingEnvironment.IsDevelopment())
-                IdentityModelEventSource.ShowPII = true;
-
-            if (Apple.Exists())
-            {
-                authentication.AddApple(options =>
-                {
-                    options.ClientId = Apple["ClientId"];
-                    options.KeyId = Apple["KeyId"];
-                    options.TeamId = Apple["TeamId"];
-                    //options.UsePkce = false;
-                    options.SaveTokens = true;
-
-                    //options.Scope.Clear();
-                    //options.Scope.Add("email name");
-
-                    //options.Events.OnTicketReceived += OnTicketRecieved;
-
-                    if (_hostingEnvironment.IsDevelopment())
-                    {
-                        //options.ReturnUrlParameter = "dev.klyk.app";
-                    }
-
-                    options.Events.OnCreatingTicket = ctx =>
-                    {
-                        List<AuthenticationToken> tokens = ctx.Properties.GetTokens().ToList();
-
-                        tokens.Add(new AuthenticationToken()
-                        {
-                            Name = "TicketCreated",
-                            Value = DateTime.UtcNow.ToString()
-                        });
-
-                        ctx.Properties.StoreTokens(tokens);
-
-                        return Task.CompletedTask;
-                    };
-
-                    //options.BackchannelHttpHandler = new HttpClientHandler()
-                    //{
-                    //    ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator,
-                    //    Proxy = new WebProxy(Configuration["System:Proxy"])
-                    //};
-
-                    options.UsePrivateKey((keyId) =>
-                        _hostingEnvironment.ContentRootFileProvider.GetFileInfo($"AuthKey_{keyId}.p8"));
-
-                });
-
-            }
 
             var key = Encoding.UTF8.GetBytes(Configuration.GetSection("Application")["JWT:SecurityKey"]);
 
@@ -280,51 +123,6 @@ namespace MountainMap.Web
                 //    }
                 //};
 
-            })
-            .AddJwtBearer(options =>
-            {
-                //options.Audience = "http://localhost:5001/";
-                //options.Authority = "https://localhost:5001/";
-                options.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuer = true,
-                    ValidateAudience = true,
-                    ValidateLifetime = true,
-                    ValidateIssuerSigningKey = true,
-                    ValidIssuer = "mountainmap.com",
-                    ValidAudience = "mountainmap.com",
-                    IssuerSigningKey = new SymmetricSecurityKey(key)
-                };
-
-
-                // We have to hook the OnMessageReceived event in order to
-                // allow the JWT authentication handler to read the access
-                // token from the query string when a WebSocket or 
-                // Server-Sent Events request comes in.
-
-                // Sending the access token in the query string is required when using WebSockets or ServerSentEvents
-                // due to a limitation in Browser APIs. We restrict it to only calls to the
-                // SignalR hub in this code.
-                // See https://docs.microsoft.com/aspnet/core/signalr/security#access-token-logging
-                // for more information about security considerations when using
-                // the query string to transmit the access token.
-                options.Events = new JwtBearerEvents
-                {
-                    OnMessageReceived = context =>
-                    {
-                        var accessToken = context.Request.Query["access_token"];
-
-                        // If the request is for our hub...
-                        var path = context.HttpContext.Request.Path;
-                        if (!string.IsNullOrEmpty(accessToken) &&
-                            (path.StartsWithSegments("/hubs/")))
-                        {
-                            // Read the token out of the query string
-                            context.Token = accessToken;
-                        }
-                        return Task.CompletedTask;
-                    }
-                };
             });
 
 
@@ -451,40 +249,6 @@ namespace MountainMap.Web
             //    domainName = "staging.mountainmap.com";
             //}
 
-            var ApplePayDomainCreateOptions = new ApplePayDomainCreateOptions
-            {
-                DomainName = domainName
-            };
-
-            var service = new ApplePayDomainService();
-
-            try
-            {
-                var domain = service.Create(ApplePayDomainCreateOptions);
-            }
-            catch (Exception ex)
-            {
-                logger.LogError(ex.Message);
-            }
-
-            string accountSid = Configuration.GetSection("Application:Twilio")["SID"];
-            string authToken = Configuration.GetSection("Application:Twilio")["Token"];
-
-            TwilioClient.Init(accountSid, authToken);
-
-            if (env.IsDevelopment() || env.IsStaging())
-            {
-                app.UseDeveloperExceptionPage();
-                //app.UseExceptionHandler("/Error");
-            }
-            else
-            {
-                app.UseExceptionHandler("/Error");
-
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
-
-            }
 
             //app.UseExceptionHandler("/Error");
 

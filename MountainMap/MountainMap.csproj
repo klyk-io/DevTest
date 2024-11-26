@@ -31,10 +31,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Web.LibraryManager.Build" Version="2.1.175" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Klyk\Klyk.csproj" />
   </ItemGroup>
 
